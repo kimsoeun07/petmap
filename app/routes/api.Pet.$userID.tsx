@@ -20,6 +20,8 @@ export const loader:LoaderFunction = async ({params}) => {
             _id: item._id.toString()
         }));
 
+        console.log(responseData)
+
         return json(responseData); // JSON 형식으로 응답
         // console.log(responseData)
 
