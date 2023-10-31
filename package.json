@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:css && remix build",
+    "build:css": "tailwindcss -m -i ./css/app.css -o app/css/app.css",
+    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
+    "dev:css": "tailwindcss -w -i ./css/app.css -o app/css/app.css"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^13.0.0",
+    "@remix-run/css-bundle": "^2.1.0",
+    "@remix-run/node": "^2.1.0",
+    "@remix-run/react": "^2.1.0",
+    "@remix-run/vercel": "^1.19.3",
+    "@vercel/node": "^3.0.7",
+    "firebase": "^10.5.2",
+    "flowbite": "^2.0.0",
+    "flowbite-react": "^0.6.4",
+    "isbot": "^3.7.0",
+    "mongodb": "^6.2.0",
+    "native-base": "^3.4.28",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
+    "react-modal": "^3.16.1",
+    "react-native-vector-icons": "^10.0.1",
+    "remix-utils": "7.0.0-pre.7"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.1.0",
+    "@remix-run/eslint-config": "^2.1.0",
+    "@remix-run/serve": "^2.1.0",
+    "@types/express": "^4.17.20",
+    "@types/react": "^18.2.33",
+    "@types/react-dom": "^18.2.14",
+    "@types/react-modal": "^3.16.2",
+    "@types/react-native-vector-icons": "^6.4.16",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.52.0",
+    "kakao.maps.d.ts": "^0.1.39",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
