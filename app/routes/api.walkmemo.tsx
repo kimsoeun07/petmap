@@ -20,7 +20,8 @@ export const loader:LoaderFunction = async ({request}) => {
             date: item.date,
         }));
 
-        return json(responseData); // JSON 형식으로 응답
+        // return json(responseData); // JSON 형식으로 응답
+        return json(responseData.map(v => ({ ...v})));
 
         // return json(data.map(v => ({ ...v, _id: v._id.toString() })));
     } catch (error) {
