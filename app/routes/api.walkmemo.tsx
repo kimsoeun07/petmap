@@ -9,8 +9,8 @@ export const loader:LoaderFunction = async ({request}) => {
     try {
 
         // 해당 날짜에 대한 데이터 조회 (예시로 모든 데이터 반환)
-        // const data = await collection.find({ "date": date.slice(0, -14) });, userID:userID 
-        const data = await collection.find({ date: { $regex: new RegExp(date) }}).toArray();
+        // const data = await collection.find({ "date": date.slice(0, -14) });
+        const data = await collection.find({ date: { $regex: new RegExp(date) }, userID:userID }).toArray();
 
         // // 필요한 속성만 선택하여 응답
         const responseData = data.map((item) => ({
