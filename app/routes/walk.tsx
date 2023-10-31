@@ -91,10 +91,10 @@ export default function Page() {
         let map = new kakao.maps.Map(ref.current, options); //지도 생성 및 객체 리턴
         mapRef.current = map;
 
-        const lat = 37.302975;
-        const lon = 126.866580;
-        const center = new kakao.maps.LatLng(lat, lon);
-        map.setCenter(center);
+        // const lat = 37.302975;
+        // const lon = 126.866580;
+        // const center = new kakao.maps.LatLng(lat, lon);
+        // map.setCenter(center);
 
         if (!navigator.geolocation) {
             const lat = 37.302975;
@@ -116,19 +116,6 @@ export default function Page() {
             const center = new kakao.maps.LatLng(lat, lon);
             map.setCenter(center);
         });
-
-        // Firebase Authentication에서 현재 로그인된 사용자 정보 가져오기
-        // const auth = getAuth();
-        // onAuthStateChanged(auth, (user) => {
-        //     if (!user) {
-        //         console.log("로그아웃 상태입니다.")
-        //         setUserId(null);
-        //     } else {
-        //         console.log("현재 로그인된 구글 이메일 주소: ", user.email);
-        //         // 로그인된 사용자가 있는 경우
-        //         setUserId(user.uid);
-        //     }
-        // });
 
 
     }, [isLoad]);
