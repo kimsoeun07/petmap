@@ -52,8 +52,13 @@ export default function Index() {
     //react native에서 위치 받기
     // window.addEventListener('message', (e) => alert(e.data))
     window.addEventListener('message', (e) => {
-        const message = JSON.parse(e.data);
-        console.log(message); // 수신한 메시지 출력
+        try {
+            const message = JSON.parse(e.data);
+            console.log(message); // 수신한 메시지 출력
+            // 원하는 동작 추가
+          } catch (error) {
+            console.error('메시지 파싱 오류:', error);
+          }
         // 원하는 동작 추가
     });
 
