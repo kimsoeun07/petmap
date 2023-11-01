@@ -98,6 +98,8 @@ export default function Index() {
                     message = '<div style="padding:5px;">내 위치</div>'; // 인포윈도우에 표시될 내용입니다
                 console.log(`그냥 좌표 받아온거 : ${lat},${lon}`)
 
+                alert(`${lat},${lon}`)
+
 
 
                 fetch(`/api/find?lat=${lat}&lon=${lon}`, {
@@ -230,19 +232,6 @@ export default function Index() {
                         let lon = longitude;
                         let lat = latitude;
 
-                        // fetch('/api/find', {
-                        //     method: 'POST',
-                        //     headers: { 'Content-Type': 'application/json' },
-                        //     body: JSON.stringify({ lon, lat }) // 현재 위치 정보 전송
-                        // })
-                        //     .then(response => response.json())
-                        //     .then(data => {
-                        //         console.log(data);
-                        //         setSearchResults(data)
-                        //     })
-                        //     .catch(error => console.error('Error:', error));
-
-// https://172.30.14.29:5000
                         fetch(`/api/find?lat=${lat}&lon=${lon}`, {
                             method: 'GET',
                             headers: { 'Content-Type': 'application/json' },
