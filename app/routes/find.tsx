@@ -51,6 +51,7 @@ export default function Index() {
 
     //react native에서 위치 받기
     // window.addEventListener('message', (e) => alert(e.data))
+    
     // window.addEventListener('message', (e) => {
     //     try {
     //         const message = JSON.parse(e.data);
