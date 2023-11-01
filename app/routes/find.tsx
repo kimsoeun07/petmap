@@ -34,8 +34,8 @@ const MapContext = createContext<React.MutableRefObject<any> | null>(null);
 export default function Index() {
     const ref = useRef<HTMLDivElement>(null);
     const mapRef = useRef<any>(null); // mapRef의 타입을 React.MutableRefObject<any>로 변경
-    const { isLoad } = useOutletContext<{isLoad:boolean}>()
-    
+    const { isLoad } = useOutletContext<{ isLoad: boolean }>()
+
     const markerRef = useRef<kakao.maps.Marker | null>(null); // markerRef 추가 검색한 좌표 저장
     const infowindowRef = useRef<kakao.maps.InfoWindow | null>(null); // infowindowRef 추가 검색한 좌표 인포윈도우 저장
 
@@ -49,7 +49,10 @@ export default function Index() {
 
     const [searchResults, setSearchResults] = useState<YourDataType[]>([]) // 결과 데이터를 저장할 상태 변수
 
-    
+    //react native에서 위치 받기
+    window.addEventListener('message', (e) => alert(e.data))
+
+
     useEffect(() => {
         if (!target || !isLoad) return;
         drawer.current = new Drawer(target.current, {
@@ -164,7 +167,7 @@ export default function Index() {
     }, [isLoad]);
 
     useEffect(() => {
-        if(!isLoad) return
+        if (!isLoad) return
         // 마커 이미지의 이미지 주소입니다
         var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
         const map = mapRef.current;
