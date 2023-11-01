@@ -50,7 +50,12 @@ export default function Index() {
     const [searchResults, setSearchResults] = useState<YourDataType[]>([]) // 결과 데이터를 저장할 상태 변수
 
     //react native에서 위치 받기
-    window.addEventListener('message', (e) => alert(e.data))
+    // window.addEventListener('message', (e) => alert(e.data))
+    window.addEventListener('message', (e) => {
+        const message = JSON.parse(e.data);
+        console.log(message); // 수신한 메시지 출력
+        // 원하는 동작 추가
+    });
 
 
     useEffect(() => {
