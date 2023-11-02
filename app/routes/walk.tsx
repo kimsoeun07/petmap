@@ -104,7 +104,7 @@ export default function Page() {
         }
 
         window.addEventListener("message", (event) => {
-            // alert(event.data);
+            alert(event.data);
             setUserId(event.data);
         });
 
