@@ -51,7 +51,7 @@ export default function Page() {
     const [timerResult, setTimerResult] = useState('');
 
     // 추가된 부분 - 현재 로그인된 사용자의 ID 상태 변수
-    const [userID, setUserID] = useState<string | null>(null);
+    // const [userID, setUserID] = useState<string | null>(null);
 
     // Start or Pause button handler
     const butFunc: MouseEventHandler = () => {
@@ -196,7 +196,8 @@ export default function Page() {
 
         console.log('데이터 보내기 함수 실행중')
 
-        setUserID('ksoeun6204@naver.com')
+        // setUserID()
+        const userID = 'ksoeun6204@naver.com'
 
         fetch('/api/walkData', {
             method: 'POST',
