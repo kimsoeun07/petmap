@@ -8,9 +8,9 @@ export const loader:LoaderFunction = async ({request}) => {
     if(!date || !userID) return json({ error: 'Server Error' }, 500)
     try {
 
-        // 해당 날짜에 대한 데이터 조회 (예시로 모든 데이터 반환)
+        // 해당 날짜에 대한 데이터 조회 (예시로 모든 데이터 반환) { $regex: new RegExp(date) } userID
         // const data = await collection.find({ "date": date.slice(0, -14) }); 
-        const data = await collection.find({  date: { $regex: new RegExp(date) }, userID:userID }).toArray();
+        const data = await collection.find({  date: '2023-10-31', userID: 'ksoeun6204@naver.com'}).toArray();
 
         // // 필요한 속성만 선택하여 응답
         const responseData = data.map((item) => ({
