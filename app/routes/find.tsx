@@ -131,7 +131,7 @@ export default function Index() {
                     message = '<div style="padding:5px;">내 위치</div>'; // 인포윈도우에 표시될 내용입니다
                 console.log(`그냥 좌표 받아온거 : ${lat},${lon}`)
 
-                alert(`${lat}.${lon}`)
+                // alert(`${lat}.${lon}`)
 
 
 
