@@ -1,10 +1,11 @@
 import { LoaderFunction, json } from "@remix-run/node";
 import { collection } from "~/lib/mongodb";
-
-export const loader:LoaderFunction = async ({request}) => {
-    const url = new URL(request.url)
-    const date = url.searchParams.get('date')
+// request
+export const loader:LoaderFunction = async ({params}) => {
+    // const url = new URL(request.url)
+    // const date = url.searchParams.get('date')
     // const userID = url.searchParams.get('userID')
+    const { date } = params;
     if(!date ) return json({ error: 'Server Error' }, 500)
     // || !userID
 
