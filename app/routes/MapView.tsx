@@ -5,6 +5,8 @@
 
 
 import { useRef, useEffect, useState } from 'react';
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0bf728be4ea8a8be3c00464e7c70c98"></script>
+
 
 // interface Coords extends Array<number> {
 //     0: number; // latitude
