@@ -5,7 +5,7 @@
 
 
 import { useRef, useEffect, useState } from 'react';
-{/* <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0bf728be4ea8a8be3c00464e7c70c98"></script> */}
+{/* <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0bf728be4ea8a8be3c00464e7c70c98"></script> */ }
 
 
 // interface Coords extends Array<number> {
@@ -29,13 +29,13 @@ const MapView = () => {
     //     setCoords(data);
     //   });
 
-    useEffect(()=>{
-        setCoords(v => [...v, [37.313268, 126.857011], [37.313140, 126.857617], 
-                [37.313012, 126.857998], [37.312428, 126.857784], [37.312162, 126.858033], 
-                [37.312291, 126.858370], [37.312394, 126.858742], [37.312265, 126.858938]]);
-    },[])
+    useEffect(() => {
+        setCoords(v => [...v, [37.313268, 126.857011], [37.313140, 126.857617],
+        [37.313012, 126.857998], [37.312428, 126.857784], [37.312162, 126.858033],
+        [37.312291, 126.858370], [37.312394, 126.858742], [37.312265, 126.858938]]);
+    }, [])
 
-    
+
     // useEffect(() => {
     //     if (!ref.current) return;
     //     const options = { //지도를 생성할 때 필요한 기본 옵션
@@ -72,18 +72,18 @@ const MapView = () => {
         script.onload = () => {
             kakao.maps.load(() => {
                 if (!ref.current) return;
-                
+
                 const mapContainer = ref.current; // 지도를 표시할 div 
-                const mapOption = { 
+                const mapOption = {
                     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
                     level: 3 // 지도의 확대 레벨
                 };
                 // 지도를 생성합니다 
-                const map = new kakao.maps.Map(mapContainer, mapOption); 
-    
+                const map = new kakao.maps.Map(mapContainer, mapOption);
+
                 // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
                 const linePath = coords.map(coord => new kakao.maps.LatLng(coord[0], coord[1]));
-    
+
                 // 지도에 표시할 선을 생성합니다
                 const polyline = new kakao.maps.Polyline({
                     path: linePath, // 선을 구성하는 좌표배열 입니다
@@ -92,17 +92,21 @@ const MapView = () => {
                     strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                     strokeStyle: 'solid' // 선의 스타일입니다
                 });
-    
+
                 // 지도에 선을 표시합니다 
                 polyline.setMap(map);
+
+                // 지도 중심좌표를 접속위치로 변경합니다
+                let locPosition = new kakao.maps.LatLng(coords[0][0], coords[0][1]);
+                map.setCenter(locPosition); // 중심 좌표 설정
             });
         };
         script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=a0bf728be4ea8a8be3c00464e7c70c98&autoload=false';
         document.head.appendChild(script);
     }, [coords]);
 
-    
-    
+
+
 
     return (
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
