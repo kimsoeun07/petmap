@@ -36,7 +36,7 @@ function formatTime(milliseconds: number): string {
 const MapContext = createContext<React.MutableRefObject<any> | null>(null);
 
 export default function Page() {
-    const { isLoad } = useOutletContext<{isLoad:boolean}>()
+    const { isLoad } = useOutletContext<{ isLoad: boolean }>()
     const [but, setBut] = useState(false)
     const [start, setStart] = useState(0)
     const [end, setEnd] = useState(0)
@@ -103,11 +103,6 @@ export default function Page() {
             map.setCenter(center);
         }
 
-        window.addEventListener("message", (event) => {
-            alert(event.data);
-            setUserId(event.data);
-        });
-
         //   map.setCenter(new kakao.maps.LatLng(coords[0][0], coords[0][1]));
 
         navigator.geolocation.getCurrentPosition((position) => {
@@ -122,7 +117,7 @@ export default function Page() {
 
 
     useEffect(() => {
-        if(!isLoad) return
+        if (!isLoad) return
         //여기에다 선 그리기
         //길이가 0이면 초기화
         let linePath = []
@@ -193,13 +188,15 @@ export default function Page() {
     }, [but, isLoad])
 
     const sendData = () => {
-        if (!userId) {
-            return
-        } // userId가 없으면 데이터 전송하지 않음
+        // if (!userId) {
+        //     return
+        // } // userId가 없으면 데이터 전송하지 않음
 
         const date = new Date();
 
         console.log('데이터 보내기 함수 실행중')
+
+        setUserId('ksoeun6204@naver.com')
 
         fetch('/api/walkData', {
             method: 'POST',
