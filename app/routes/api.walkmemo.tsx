@@ -1,5 +1,5 @@
 import { LoaderFunction, json } from "@remix-run/node";
-import { collection } from "~/lib/mongodb";
+import { walkcollection } from "~/lib/mongodb";
 
 export const loader:LoaderFunction = async ({request}) => {
     const url = new URL(request.url)
@@ -9,7 +9,7 @@ export const loader:LoaderFunction = async ({request}) => {
     const dateRegex = new RegExp(date + "T");
     try {
 // { $regex: new RegExp(date) } { date: date, userID: userID }
-        const data = await collection.find({}).toArray();
+        const data = await walkcollection.find({}).toArray();
 
         const responseData = data.map((item) => ({
             imageURL: item.coords,
