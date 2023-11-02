@@ -97,8 +97,8 @@ const MapView = () => {
                 polyline.setMap(map);
 
                 // 지도 중심좌표를 접속위치로 변경합니다
-                let locPosition = new kakao.maps.LatLng(coords[0][0], coords[0][1]);
-                map.setCenter(locPosition); // 중심 좌표 설정
+                // let locPosition = new kakao.maps.LatLng(coords[0][0], coords[0][1]);
+                map.setCenter(new kakao.maps.LatLng(37.312265, 126.858938)); // 중심 좌표 설정
             });
         };
         script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=a0bf728be4ea8a8be3c00464e7c70c98&autoload=false';
