@@ -17,10 +17,19 @@ import { useRef, useEffect, useState } from 'react';
 
 
 const MapView = () => {
-    const [coords, setCoords] = useState([])
+    const [coords, setCoords] = useState<[number, number][]>([]);
     // { coords }: MapViewProps
     const ref = useRef<HTMLDivElement>(null);
-    window.addEventListener('message',(e) => setCoords(e.data) )
+    // window.addEventListener('message',(e) => setCoords(e.data) )
+    // window.addEventListener('message', (e) => {
+    //     // 문자열 형태의 메시지를 다시 객체나 배열 등의 원래 형태로 변환
+    //     const data = JSON.parse(e.data);
+    //     setCoords(data);
+    //   });
+
+    setCoords(v => [...v, [37.313268, 126.857011], [37.313140, 126.857617], 
+            [37.313012, 126.857998], [37.312428, 126.857784], [37.312162, 126.858033], 
+            [37.312291, 126.858370], [37.312394, 126.858742], [37.312265, 126.858938]]);
 
     useEffect(() => {
         if (!ref.current) return;
