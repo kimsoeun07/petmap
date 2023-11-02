@@ -63,6 +63,21 @@ export default function Index() {
     //     // 원하는 동작 추가
     // });
 
+    // window.addEventListener('DOMContentLoaded', (event) => {
+    //     // window.webLocation에 접근하여 위치 정보를 가져옵니다.
+    //     const location = window.webLocation;
+    //     console.log(location); // 받아온 위치 정보를 출력
+    //     // 여기서 필요한 동작을 수행합니다.
+    // });
+
+    window.addEventListener('message', (event) => {
+        const location = JSON.parse(event.data);
+        console.log(location); // 받아온 위치 정보를 출력
+        // 여기서 필요한 동작을 수행합니다.
+
+        alert(`${location}`)
+      });
+
 
     useEffect(() => {
         if (!target || !isLoad) return;
