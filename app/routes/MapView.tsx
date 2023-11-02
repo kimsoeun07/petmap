@@ -70,11 +70,39 @@ const MapView = () => {
     useEffect(() => {
         const script = document.createElement('script');
         script.onload = () => {
-            // 이곳에 지도 생성 로직
+            kakao.maps.load(() => {
+                if (!ref.current) return;
+                
+                const mapContainer = ref.current; // 지도를 표시할 div 
+                const mapOption = { 
+                    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
+                // 지도를 생성합니다 
+                const map = new kakao.maps.Map(mapContainer, mapOption); 
+    
+                // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
+                const linePath = coords.map(coord => new kakao.maps.LatLng(coord[0], coord[1]));
+    
+                // 지도에 표시할 선을 생성합니다
+                const polyline = new kakao.maps.Polyline({
+                    path: linePath, // 선을 구성하는 좌표배열 입니다
+                    strokeWeight: 5, // 선의 두께 입니다
+                    strokeColor: '#FFAE00', // 선의 색깔입니다
+                    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                    strokeStyle: 'solid' // 선의 스타일입니다
+                });
+    
+                // 지도에 선을 표시합니다 
+                polyline.setMap(map);
+            });
         };
         script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=a0bf728be4ea8a8be3c00464e7c70c98&autoload=false';
         document.head.appendChild(script);
-    }, []);
+    }, [coords]);
+
+    
+    
 
     return (
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
