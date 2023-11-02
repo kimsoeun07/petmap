@@ -6,10 +6,10 @@ export const loader:LoaderFunction = async ({request}) => {
     const date = url.searchParams.get('date')
     const userID = url.searchParams.get('userID')
     if(!date || !userID) return json({ error: 'Server Error' }, 500)
-
+    const dateRegex = new RegExp(date + "T");
     try {
 // { $regex: new RegExp(date) }
-        const data = await collection.find({ date: date, userID: userID }).toArray();
+        const data = await collection.find({ date: dateRegex, userID: userID }).toArray();
 
         const responseData = data.map((item) => ({
             imageURL: item.coords,
