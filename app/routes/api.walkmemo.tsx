@@ -9,7 +9,7 @@ export const loader:LoaderFunction = async ({request}) => {
     const dateRegex = new RegExp(date + "T");
     try {
 // { $regex: new RegExp(date) }
-        const data = await collection.find({ date: dateRegex, userID: userID }).toArray();
+        const data = await collection.find({ date: date, userID: userID }).toArray();
 
         const responseData = data.map((item) => ({
             imageURL: item.coords,
