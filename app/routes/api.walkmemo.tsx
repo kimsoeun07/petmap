@@ -6,10 +6,8 @@ export const loader:LoaderFunction = async ({request}) => {
     const date = url.searchParams.get('date')
     const userID = url.searchParams.get('userID')
     if(!date || !userID) return json({ error: 'Server Error' }, 500)
-    const dateRegex = new RegExp(date + "T");
     try {
-// { $regex: new RegExp(date) } { date: date, userID: userID }
-        const data = await walkcollection.find({}).toArray();
+        const data = await walkcollection.find({date: { $regex: new RegExp(date) }, userID : userID}).toArray();
 
         const responseData = data.map((item) => ({
             imageURL: item.coords,
