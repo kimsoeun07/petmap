@@ -49,7 +49,7 @@ export default function Index() {
 
     const [searchResults, setSearchResults] = useState<YourDataType[]>([]) // 결과 데이터를 저장할 상태 변수
 
-    const [messageLocation, setMessageLocation] = useState('');
+    // const [messageLocation, setMessageLocation] = useState('');
 
     //react native에서 위치 받기
     // window.addEventListener('message', (e) => alert(e.data))
@@ -72,15 +72,15 @@ export default function Index() {
     //     // 여기서 필요한 동작을 수행합니다.
     // });
 
-    window.addEventListener('message', (event) => {
-        const location = JSON.parse(event.data);
-        console.log(location); // 받아온 위치 정보를 출력
-        // 여기서 필요한 동작을 수행합니다.
+    // window.addEventListener('message', (event) => {
+    //     const location = JSON.parse(event.data);
+    //     console.log(location); // 받아온 위치 정보를 출력
+    //     // 여기서 필요한 동작을 수행합니다.
 
-        setMessageLocation(location);
+    //     setMessageLocation(location);
 
-        alert(`${location}`)
-      });
+    //     alert(`${location}`)
+    //   });
 
 
     useEffect(() => {
