@@ -8,8 +8,8 @@ export const loader:LoaderFunction = async ({request}) => {
     if(!date || !userID) return json({ error: 'Server Error' }, 500)
     const dateRegex = new RegExp(date + "T");
     try {
-// { $regex: new RegExp(date) }
-        const data = await collection.find({ date: date, userID: userID }).toArray();
+// { $regex: new RegExp(date) } { date: date, userID: userID }
+        const data = await collection.find({}).toArray();
 
         const responseData = data.map((item) => ({
             imageURL: item.coords,
