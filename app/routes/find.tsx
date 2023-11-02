@@ -49,7 +49,7 @@ export default function Index() {
 
     const [searchResults, setSearchResults] = useState<YourDataType[]>([]) // 결과 데이터를 저장할 상태 변수
 
-    const [messageLocation, setMessageLocation] = useState('');
+    // const [messageLocation, setMessageLocation] = useState('');
 
     //react native에서 위치 받기
     // window.addEventListener('message', (e) => alert(e.data))
@@ -72,15 +72,15 @@ export default function Index() {
     //     // 여기서 필요한 동작을 수행합니다.
     // });
 
-    window.addEventListener('message', (event) => {
-        const location = JSON.parse(event.data);
-        console.log(location); // 받아온 위치 정보를 출력
-        // 여기서 필요한 동작을 수행합니다.
+    // window.addEventListener('message', (event) => {
+    //     const location = JSON.parse(event.data);
+    //     console.log(location); // 받아온 위치 정보를 출력
+    //     // 여기서 필요한 동작을 수행합니다.
 
-        setMessageLocation(location);
+    //     setMessageLocation(location);
 
-        alert(`${location}`)
-      });
+    //     alert(`${location}`)
+    //   });
 
 
     useEffect(() => {
@@ -358,7 +358,7 @@ export default function Index() {
                     <h5 className="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400">
                         <svg className="w-4 h-4 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                        </svg>동물병원 {messageLocation}</h5>
+                        </svg>동물병원</h5>
                     <button onClick={() => {
                         if (!drawer.current) return;
                         drawer.current.toggle();
