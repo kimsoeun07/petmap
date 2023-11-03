@@ -5,11 +5,11 @@ const MapView = () => {
     // { coords }: MapViewProps
     const ref = useRef<HTMLDivElement>(null);
     // window.addEventListener('message',(e) => setCoords(e.data) )
-    window.addEventListener('message', (e) => {
-        // 문자열 형태의 메시지를 다시 객체나 배열 등의 원래 형태로 변환
-        const data = JSON.parse(e.data);
-        setCoords(data);
-      });
+    // window.addEventListener('message', (e) => {
+    //     // 문자열 형태의 메시지를 다시 객체나 배열 등의 원래 형태로 변환
+    //     const data = JSON.parse(e.data);
+    //     setCoords(data);
+    //   });
 
     useEffect(() => {
         setCoords(v => [...v, [37.313268, 126.857011], [37.313140, 126.857617],
