@@ -1,33 +1,15 @@
-// 1. 지도 띄우기
-// 2. coords를 받아와서 선 그리기
-// 3. 중심좌표 지정하기
-// 4. 이렇게 만든 지도를 export하기
-
-
 import { useRef, useEffect, useState } from 'react';
-{/* <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0bf728be4ea8a8be3c00464e7c70c98"></script> */ }
-
-
-// interface Coords extends Array<number> {
-//     0: number; // latitude
-//     1: number; // longitude
-// }
-
-// interface MapViewProps {
-//     coords: Coords[];
-// }
-
 
 const MapView = () => {
     const [coords, setCoords] = useState<[number, number][]>([]);
     // { coords }: MapViewProps
     const ref = useRef<HTMLDivElement>(null);
     // window.addEventListener('message',(e) => setCoords(e.data) )
-    // window.addEventListener('message', (e) => {
-    //     // 문자열 형태의 메시지를 다시 객체나 배열 등의 원래 형태로 변환
-    //     const data = JSON.parse(e.data);
-    //     setCoords(data);
-    //   });
+    window.addEventListener('message', (e) => {
+        // 문자열 형태의 메시지를 다시 객체나 배열 등의 원래 형태로 변환
+        const data = JSON.parse(e.data);
+        setCoords(data);
+      });
 
     useEffect(() => {
         setCoords(v => [...v, [37.313268, 126.857011], [37.313140, 126.857617],
