@@ -9,9 +9,9 @@ const MapView = () => {
     useEffect(() => {
         window.addEventListener('message', (e) => {
             // 문자열 형태의 메시지를 다시 객체나 배열 등의 원래 형태로 변환
-            // const data = JSON.parse(e.data);
-            console.log(e.data);
-            const data = JSON.parse(JSON.stringify(e.data));
+            const data = JSON.parse(e.data);
+            console.log(data);
+            // const data = JSON.parse(JSON.stringify(e.data));
             setCoords(data);
 
             // console.log(coords)
