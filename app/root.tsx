@@ -14,12 +14,12 @@ import { useEffect, useState } from "react";
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: CSS },
-  { rel:"stylesheet", href:'/global.css'}
+  { rel: "stylesheet", href: '/global.css' }
 ];
 export let handle: ExternalScriptsHandle = {
   scripts: [
     {
-      src: "https://dapi.kakao.com/v2/maps/sdk.js?appkey=a0bf728be4ea8a8be3c00464e7c70c98&libraries=services&autoload=false",
+      src: "https://dapi.kakao.com/v2/maps/sdk.js?appkey=a0bf728be4ea8a8be3c00464e7c70c98&libraries=services&autoload=false&autoload=false",
     }
   ],
 };
@@ -28,7 +28,7 @@ export let handle: ExternalScriptsHandle = {
 export default function App() {
   const [isLoad, setIsLoad] = useState(false)
   useEffect(() => {
-    if(!isLoad){
+    if (!isLoad) {
       kakao.maps.load(() => {
         setIsLoad(true)
       })
@@ -44,7 +44,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet context={{isLoad}}/>
+        <Outlet context={{ isLoad }} />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
