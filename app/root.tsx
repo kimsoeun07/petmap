@@ -19,7 +19,7 @@ export const links: LinksFunction = () => [
 export let handle: ExternalScriptsHandle = {
   scripts: [
     {
-      src: "https://dapi.kakao.com/v2/maps/sdk.js?appkey=a0bf728be4ea8a8be3c00464e7c70c98&libraries=services&autoload=false&autoload=false",
+      src: "https://dapi.kakao.com/v2/maps/sdk.js?appkey=a0bf728be4ea8a8be3c00464e7c70c98&libraries=services&autoload=false",
     }
   ],
 };
