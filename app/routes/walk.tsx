@@ -36,7 +36,7 @@ function formatTime(milliseconds: number): string {
 const MapContext = createContext<React.MutableRefObject<any> | null>(null);
 
 export default function Page() {
-    const { isLoad } = useOutletContext<{ isLoad: boolean }>()
+    const context = useOutletContext<{ isLoad: boolean }>()
     const [but, setBut] = useState(false)
     const [start, setStart] = useState(0)
     const [end, setEnd] = useState(0)
@@ -82,7 +82,7 @@ export default function Page() {
     const ref = useRef<HTMLDivElement>(null);
     const mapRef = useRef<kakao.maps.Map>()
     useEffect(() => {
-        if (!ref.current || !isLoad) return;
+        if (!ref.current || !context.isLoad) return;
         const options = { //지도를 생성할 때 필요한 기본 옵션
             center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
             level: 3 //지도의 레벨(확대, 축소 정도)
@@ -113,11 +113,11 @@ export default function Page() {
         });
 
 
-    }, [isLoad]);
+    }, [context]);
 
 
     useEffect(() => {
-        if (!isLoad) return
+        if (!context.isLoad) return
         //여기에다 선 그리기
         //길이가 0이면 초기화
         let linePath = []
@@ -139,11 +139,11 @@ export default function Page() {
         // 지도에 선을 표시합니다 
         polyline.setMap(map);
 
-    }, [coords, isLoad])
+    }, [coords, context])
 
     useEffect(() => {
 
-        if (!mapRef.current || !navigator.geolocation || !isLoad) return
+        if (!mapRef.current || !navigator.geolocation || !context.isLoad) return
 
         //여기 >1로 수정 해 놓으시오
         if (!but && coords.length >= 1) {
@@ -185,7 +185,7 @@ export default function Page() {
         }
 
 
-    }, [but, isLoad])
+    }, [but, context])
 
     const sendData = () => {
         // if (!userId) {

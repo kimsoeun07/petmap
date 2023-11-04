@@ -27,13 +27,21 @@ export let handle: ExternalScriptsHandle = {
 
 export default function App() {
   const [isLoad, setIsLoad] = useState(false)
+  const [again, setAgain] = useState(0)
   useEffect(() => {
+    if (!window.kakao) {
+      const t = setTimeout(() => {
+        setAgain(again + 1)
+        console.log(again)
+      }, 500)
+      return () => clearTimeout(t)
+    }
     if (!isLoad) {
       kakao.maps.load(() => {
         setIsLoad(true)
       })
     }
-  }, [isLoad])
+  }, [isLoad, again])
   return (
     <html lang="en">
       <head>
