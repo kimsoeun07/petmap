@@ -165,10 +165,10 @@ export default function Page() {
                         message = '<div style="padding:5px;">내 위치</div>';
                     displayMarker(locPosition, message)
                     getCurrent()
-                    // if (but) {
-                    //     if (coords.length === 0 || coords[coords.length - 1][0] !== lat || coords[coords.length - 1][1] !== lon)
-                    //         // setCoords(v => [...v, [lat, lon]])
-                    // }
+                    if (!but) {
+                        if (coords.length === 0 || coords[coords.length - 1][0] !== lat || coords[coords.length - 1][1] !== lon)
+                            setCoords(v => [...v, [lat, lon]])
+                    }
                 }, 1000)
             });
         }
