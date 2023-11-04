@@ -11,6 +11,7 @@ const MapView = () => {
             // 문자열 형태의 메시지를 다시 객체나 배열 등의 원래 형태로 변환
             const data = JSON.parse(e.data);
             console.log(data);
+            console.log(typeof e.data)
             // const data = JSON.parse(JSON.stringify(e.data));
             setCoords(data);
 
