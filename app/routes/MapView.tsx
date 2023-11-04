@@ -10,13 +10,13 @@ const MapView = () => {
         window.addEventListener('message', (e) => {
             // 문자열 형태의 메시지를 다시 객체나 배열 등의 원래 형태로 변환
             // const data = JSON.parse(e.data);
-            const data = JSON.parse(JSON.stringify(e.data));
-            console.log();
             const data2 = `${e.data}`
+            const data = JSON.parse(data2);
             console.log(typeof data2)
             setCoords(data);
 
-            // console.log(coords)
+            console.log(`data2 = ${data2}`)
+            console.log(`data = ${data}`)
         });
 
     }, [])
