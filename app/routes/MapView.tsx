@@ -13,7 +13,7 @@ const MapView = () => {
             const data = e.data
             setCoords(data);
 
-            console.log(data)
+            console.log(coords)
         });
 
     }, [])
